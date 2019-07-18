@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 require('./api/router.js')(app);
+const db = require('./bd/bd.js');
+db.connection;
 
 // Iniciamos el servidor escuchado por el puerto 3500
-app.listen(3500, function(){
+app.listen(3501, function(){
     console.log( 'El server está corriendo' ); 
 }); 

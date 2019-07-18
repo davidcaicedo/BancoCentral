@@ -15,9 +15,8 @@ class DB{
 
             // conectamos y manejamos la conexion con throw
             this.connection.connect((err) => {
-                if(err){
-                    throw err;
-                }                    
+                if (err) throw err    
+                console.log( 'Fallo la cone' );
             });
             console.log( 'Entró a conectar' );
         }
