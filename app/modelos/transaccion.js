@@ -29,7 +29,7 @@ class Transaccion {
     static mapFactory(entity){
         let mp = {};
         if(entity){
-            mp = new Cuenta(
+            mp = new Transaccion(
                 entity.id_transaccion,
                 entity.id_cliente,
                 entity.id_cuenta,
