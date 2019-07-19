@@ -15,7 +15,7 @@ class TransaccionControlador {
             })
     }
     // Funcion encargada de manejar al consulta de todos los registros de la base de datos
-    consultaTransaccion(req, res) {
+    consultaTransacciones(req, res) {
         Transaccion.consultarTransacciones((err, data) => {
                 if(data){
                     res.json(data);
