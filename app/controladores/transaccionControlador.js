@@ -6,7 +6,7 @@ class TransaccionControlador {
     //Funcion encargada de manejar la consulta de un registro por id
     consultaTransaccion(req, res) {
         let id = req.params.id;
-        Cuenta.consultarTransaccion(id, (err, data) => {
+        Transaccion.consultarTransaccion(id, (err, data) => {
                 if(data){
                     res.json(data);
                 }else{
