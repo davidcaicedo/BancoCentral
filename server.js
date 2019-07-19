@@ -1,18 +1,13 @@
-const express = require( 'express' );
-const bodyParser = require( 'body-parser' );
-
-// Instanciamos express como servidor
+const express    = require('express');
+const bodyParser = require('body-parser');
+//Instanciamos express como servidor para emepzar a utilizar su potencia
 const app = express();
-
-// Uso de BodyParser
-app.use(bodyParser.urlencoded({ extended: false}));
+//Uso de Body Parser Para manejo de la informacion que viaja por las peticiones http al servidor
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+//Importamos la libreria o modulo router mandandole como parametro la instancia de servidor express
 require('./api/router.js')(app);
-const db = require('./bd/bd.js');
-db.connection;
-
-// Iniciamos el servidor escuchado por el puerto 3500
-app.listen(3501, function(){
-    console.log( 'El server está corriendo' ); 
-}); 
+//Iniciamos el servidor escuchando por un puerto  
+app.listen(9000, function(){
+    console.log('EL servidor esta corriendo por el puerto 9000');
+});

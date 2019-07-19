@@ -1,35 +1,32 @@
 const mysql = require('mysql');
-// Creamos la clase de conexion para este caso es MYSQL
-class DB{
+//Creamos clase encargada de conectar a la base de datos MYSQL o MARIADB
+class DB {
     constructor(){
-        if( !DB.instancia ){
+        //Verificamos la existencia de alguna instancia en la base de datos
+        if(!DB.instancia){
             DB.instancia = this;
-
-            // Agregamos los parámetros de conexión
+            //Agregamos los parametros de conexion
             this.connection = mysql.createConnection({
-                host     : '127.0.0.1',
-                user     : 'root',
-                password : '',
-                database : ''
+                host     : '10.100.25.17',
+                user     : 'bancocentral',
+                password : 'b@ncocentr@l',
+                database : 'flexcube'
             });
-
-            // conectamos y manejamos la conexion con throw
+            //conectamos y manejamos la conexion con throw
             this.connection.connect((err) => {
-                if (err) throw err    
-                console.log( 'Fallo la cone' );
+                if (err) throw err;    
+                //console.log('Fallo la cone!');
             });
-            console.log( 'Entró a conectar' );
+            //console.log('Entro a conectar!!');
         }
-
-        // Si existe la instancia, que la retorne
-        console.log( 'Encontró una instancia de conexión.' );
+        //si existe la instancia que retorne la misma
+        //console.log('Encontro una instancia de cone');
         return DB.instancia;
     }
 }
-
-// Instanciamos la base de datos
+//creamos una instancia de la clase
 const instancia = new DB();
-// Freeze por seguridad, para que no se puedan modificar las variables
-Object.freeze( instancia );
-
+//Por seguridad  por medio del freeze congelamos los parametros de cada instancia para evitar la inyeccion sql
+Object.freeze(instancia);
+//Hacemos visible el modulo
 module.exports = instancia;
