@@ -38,6 +38,21 @@ module.exports = (app) => {
         TransaccionControlador.consultaTransacciones(req, res);
     });
 
+    
+
+    /*
+    //Rcurso Personas que me devuele por le metodo POST la estructura de una persona segun los datos que llegan
+    app.post('/personas', (req, res) => {
+        let nombre = req.body.nombre;
+        let edad   = req.body.edad;
+        let miPersona = {
+            'elNombre' : nombre,
+            'laEdad'   : edad
+        };
+        res.send(miPersona);
+    });*/
+
+    // Personas
     //Recurso raiz que me devuelve un json con la estructura de una persona
     app.get('/', function (req, res) {
         let persona = {

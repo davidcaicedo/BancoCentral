@@ -22,6 +22,7 @@ class Cliente {
         this.documento  = documento;
         this.profesion  = profesion;
     }
+
     //Funcion encargada de Mapear los campos de la base de datos en el orden que estan segun la super clase, con el fin de enmascarar los campos de la base de datos
     static mapFactory(entity){
         let mp = {};
@@ -35,6 +36,7 @@ class Cliente {
         }        
         return mp;
     }
+
     //Funcion que consulta un cliente segun el id de la base de datos
     static consultarCliente(id, callback) {
         //Armamos la consulta segn los parametros que necesitemos
@@ -56,6 +58,7 @@ class Cliente {
             throw "Problema conectado con Mysql en consultarCliente";
         } 
     }
+
     //Funcion encargada de consultar todos los clientes de la base de datos
     static consultarClientes(callback) {
         //Armamos la consulta segn los parametros que necesitemos
@@ -78,6 +81,44 @@ class Cliente {
             })
         }else{
             throw "Problema conectado con Mysql";
+        } 
+    }
+
+    //Funcion que insrta un registro en la base de datos
+    static registrarCliente( Cliente, callback ) 
+    {
+        //Armamos la consulta segn los parametros que necesitemos
+        let sql = "";
+        sql += "INSERT INTO() "+table.name;
+        sql += "( nombre_cliente, documento_cliente, profesion_cliente )";
+        sql += " VALUES(";
+        sql += "'"+Cliente.nombre_cliente+"',";
+        sql += "'"+Cliente.documento_cliente+"',";
+        sql += "'"+Cliente.profesion_cliente+"'";
+        sql += " );";
+
+        /*
+          entity.nombre_cliente,
+                entity.documento_cliente,
+                entity.profesion_cliente
+        */
+
+        //Verificamos la conexion
+        if(sql){
+            sql.query(query, (err, result) => {
+                if(err)
+                {
+                    throw err;
+                }
+                else
+                {     
+                    let cliente = Cliente.mapFactory(result[0]);                                                                                          
+                    console.log(cliente);                          
+                    callback(null,cliente);
+                }
+            })
+        }else{
+            throw "Problema conectado con Mysql en consultarCliente";
         } 
     }
 }
